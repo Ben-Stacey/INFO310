@@ -1,0 +1,158 @@
+buildscript {
+
+  repositories {
+    mavenCentral()
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+
+  dependencies {
+    /**
+     * joobyRun 
+     */
+    classpath "io.jooby:jooby-gradle-plugin:2.15.0"
+    classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
+  }
+}
+
+apply plugin: "com.github.johnrengelman.shadow"
+apply plugin: 'java'
+apply plugin: 'jacoco'
+apply plugin: 'application'
+apply plugin: 'jooby'
+apply plugin: 'io.jooby.run'
+
+joobyRun {
+  mainClassName = "server.Server"                              
+}
+ 
+application {
+	mainClass = 'server.Server'
+}
+
+
+shadowJar {
+ mergeServiceFiles()
+}
+
+processResources {
+  from ('static/') {
+      into 'static'
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'server.Server'
+        )
+    }
+}
+
+ 
+repositories {
+    mavenCentral()
+}
+ 
+dependencies {
+    // jooby test for testing event/student/staff modules
+    implementation 'io.jooby:jooby-test:2.14.1'
+ 
+    def junitVer = '5.7.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: junitVer
+    testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: junitVer
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    implementation group: 'com.google.guava', name: 'guava', version: '30.1.1-jre'
+    implementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.0'
+    implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.5'
+    
+    def jdbiVer = '3.21.0'
+    implementation group: 'org.jdbi', name: 'jdbi3-core', version: jdbiVer
+    implementation group: 'org.jdbi', name: 'jdbi3-sqlobject', version: jdbiVer
+    
+    // https://mvnrepository.com/artifact/net.sf.oval/oval
+    implementation group: 'net.sf.oval', name: 'oval', version: '3.2.0'
+    
+    testImplementation group: 'org.mockito', name: 'mockito-core', version: '3.11.2'
+    testImplementation group: 'org.assertj', name: 'assertj-swing-junit', version: '3.17.1'
+    
+    def joobyVer = '2.10.0'
+    implementation group: 'io.jooby', name: 'jooby-netty', version: joobyVer
+    implementation group: 'io.jooby', name: 'jooby-gson', version: joobyVer
+    
+    implementation group:'org.bouncycastle', name:'bcprov-jdk15on', version:'1.69'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+sourceSets {
+   'static' {
+      resources {
+         srcDirs = ['static']
+      }
+      java {
+         srcDirs = []
+      }
+   }
+}
+ 
+def gitIgnored="""
+.gradle
+.classpath
+.project
+build
+bin
+dist
+*.zip
+*.tgz
+*.class
+.DS_Store
+"""
+ 
+task createGitIgnore {
+    group = "Git"
+    description = "Create the project's .gitignore file."
+    doLast {
+        def file = new File(projectDir, ".gitignore")
+        if ( !file.exists() ) {
+            println('Creating .gitignore')
+            file.text = gitIgnored
+        } else {
+            println('.gitignore already exists')
+        }
+    }
+}
+ 
+task createMissingSourceFolders {
+  group = "Directories"
+  description = "Create all of the missing source folders for this project."
+  doFirst {
+      sourceSets.each { def sourceRoot ->
+          sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+              if (!sourceDir.dir.exists()) {
+                  println "Creating ${sourceDir}"
+                  mkdir sourceDir.dir
+              }
+          }
+      }
+  }
+}
+ 
+task deleteEmptySourceFolders {
+  group = "Directories"
+  description = "Delete all empty source folders."
+  doFirst {
+      sourceSets.each { def sourceRoot ->
+          sourceRoot.allSource.srcDirTrees.each { def sourceDir ->
+              if (sourceDir.dir.exists() && sourceDir.dir.isDirectory() && sourceDir.dir.list().length == 0) {
+                  println "Removing empty ${sourceDir}"
+                  sourceDir.dir.delete()
+              }
+          }
+      }
+  }
+}
