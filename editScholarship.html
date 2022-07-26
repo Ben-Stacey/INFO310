@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Edit Scholarship</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Staff Contacts</h1>
+        </header>
+        <div class="editEvent">
+            <navigation></navigation>
+        </div>
+
+        <main id="content">
+            <div id="editScholarship">
+                <h1>Edit Scholarship</h1>
+                <navigation></navigation>
+                <form @submit.prevent="editScholarship()">
+                    <fieldset>
+                        <legend>Scholarship Details:</legend>
+                        <p>
+                            <label for="newName">Scholarship name:</label>
+                            <input type="text" id="newName" v-model="scholarshipToUpdate.scholarshipName" required>
+                        </p>
+                        <p>
+                            <label for="description">Description:</label>
+                            <textarea id="description" v-model="scholarshipToUpdate.description" required></textarea>
+                        </p>
+                        <p>
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" v-model="scholarshipToUpdate.subject" required>
+                        </p>
+                        <p>
+                            <label for="provider">Provider:</label>
+                            <input type="text" id="provider" v-model="scholarshipToUpdate.provider" required>
+                        </p>
+                        <p>
+                            <label for="duration">Duration:</label>
+                            <input type="text" id="duration" v-model="scholarshipToUpdate.duration" required>
+                        </p>
+
+                    </fieldset>
+                    <div class="buttons">
+                        <td><button type="button" @click.prevent="editScholarship(scholarshipToUpdate)">Edit Scholarship</button></td>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <script type="module" src="js/scholarship-list.js"></script>
+    </body>
+</html>

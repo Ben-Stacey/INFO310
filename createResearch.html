@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Create Research Project</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Create Research Project</h1>
+
+        </header>
+
+        <main id="content">
+            <navigation></navigation>
+            <div id="createResearch">
+                <h1>Create New Research Project</h1>
+                <form @submit.prevent="createResearch()">
+                    <fieldset>
+                        <legend>Details:</legend>
+                        <p>
+                            <label for="researchName">Research name:</label>
+                            <input type="text" id="researchName" v-model="research.researchName" required>
+                        </p>
+                        <p>
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" v-model="research.subject" required>
+                        </p>
+                        <p>
+                            <label for="startDate">Start Date:</label>
+                            <input type="date" id="startDate" v-model="research.startDate" required>
+                        </p>
+                        <p>
+                            <label for="endDate">End Date:</label>
+                            <input type="date" id="endDate" v-model="research.endDate" required>
+                        </p>
+                        <p>
+                            <label for="description">Description:</label>
+                            <textarea id="description" v-model="research.description" required></textarea>
+                        </p>
+
+                    </fieldset>
+                    <div class="buttons">
+                        <button class="submitButton" type="submit">Submit Research</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <script type="module" src="js/research-list.js"></script>
+    </body>
+</html>

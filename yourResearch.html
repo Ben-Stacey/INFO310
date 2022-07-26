@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Your Research Opportunities</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>Maori Opportunities and Events</h1>
+            </header>
+
+            <navigation></navigation>
+
+
+            <div>
+                <h2>Research Opportunities You Have Expressed Interest In</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Subject</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Description</th>
+                        <th>Staff In Charge</th>
+                        <th>Not attending event?</th> 
+                    </tr>
+                    <tr v-for="r in yourResearchList">
+                        <td>{{r.researchName}}</td>
+                        <td>{{r.description}}</td>
+                        <td>{{r.subject}}</td>
+                        <td>{{r.startDate}}</td>
+                        <td>{{r.endDate}}</td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <!-- <script type="module" src="js/events-list.js"></script> -->
+        <script type="module" src="js/research-list.js"></script>
+    </body>
+</html>

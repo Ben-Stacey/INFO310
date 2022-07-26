@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Scholarship Apply</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Apply for Scholarship</h1>
+        </header>
+        <div class="editEvent">
+            <navigation></navigation>
+        </div>
+
+        <main id="content">
+            <div id="editEvent">
+                <navigation></navigation>
+                <form @submit.prevent="goToApply()">
+                    <fieldset>
+                        <legend>Enter Application:</legend>
+                        <p>You are applying for: {{scholarshipToUpdate.scholarshipName}}</p>
+                        <p>
+                            <label for="application">Your application:</label>
+                            <input type="text" id="application" required>
+                        </p>
+                    </fieldset>
+                    <div class="buttons">
+                        <td><button type="button" @click.prevent="applyScholarship(application)">Submit</button></td>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <script type="module" src="js/scholarship-list.js"></script>
+    </body>
+</html>

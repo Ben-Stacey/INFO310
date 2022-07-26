@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <html>
+        <head>
+            <title>Delete Confirmation</title>
+            <script src="js/external/vue.global.js"></script>
+            <script src="js/external/vuex.global.js"></script>
+            <script src="js/external/vuex-persistedstate.js"></script>
+            <script src="js/external/axios.js"></script>
+            <link rel="stylesheet" href="style.css">
+            <meta charset="windows-1252">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        </head>
+        <body>
+            <main id="content">
+                <header>
+                    <h1>Confirm Delete</h1>
+                </header>
+
+                <div>
+                    <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>Location</th>
+                            <th>Category</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Subject</th> 
+                            <th>Description</th>
+                            <th>Join this event</th>
+                        </tr>
+                        <tr>
+                            <td>{{event.eventName}}</td>
+                            <td>{{event.location}}</td>
+                            <td>{{event.category}}</td>
+                            <td>{{event.type}}</td>
+                            <td>{{event.eventDate}}</td>
+                            <td>{{event.subject}}</td>
+                            <td>{{event.description}}</td>
+                        </tr>
+                    </table>
+                    <button>Yes</button>
+                    <button>No</button><!-- Yes/no buttons. No will take user back to events, yes will delete event. -->
+                </div>
+            </main>
+            <script type="module" src="js/event-mutate.js"></script>
+        </body>
+    </html>

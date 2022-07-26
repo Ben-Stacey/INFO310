@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>You have joined this event</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>You've been added to the list!</h1>
+            </header>
+
+            <div>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Subject</th> 
+                        <th>Description</th>
+                    </tr>
+                    <tr>
+                        <td>{{event.eventName}}</td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.category}}</td>
+                        <td>{{event.type}}</td>
+                        <td>{{event.eventDate}}</td>
+                        <td>{{event.subject}}</td>
+                        <td>{{event.description}}</td>
+                    </tr>
+                </table>
+                <p>You have successfully been added to the list of attendees for this event!</p>
+            </div>
+        </main>
+        <script type="module" src="js/events-list.js"></script>
+    </body>
+</html>

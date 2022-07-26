@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Find Scholarships</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>Maori Opportunities and Scholarships</h1>
+            </header>
+            <div class="scholarship">
+                <navigation></navigation>
+            </div>
+
+            <div>
+                <h2>Our Scholarships</h2>
+                <div id="categories">
+                    <div class="dropdown">
+                        <button class="dropbtn" @click.prevent="getAllScholarships()">All Scholarships</button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Subject</button>
+                        <div class="dropdown-content">
+                            <a v-for="subject in subject" @click.prevent="filterBySubject(subject)">{{subject}}</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Provider</button>
+                        <div class="dropdown-content">
+                            <a v-for="provider in provider" @click.prevent="filterByProvider(provider)">{{provider}}</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Duration</button>
+                        <div class="dropdown-content">
+                            <a v-for="duration in duration" @click.prevent="filterByDuration(duration)">{{duration}}</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Amount</button>
+                        <div class="dropdown-content">
+                            <a v-for="amount in amount" @click.prevent="filterByAmount(amount)">{{amount}}</a>
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Subject</th>
+                        <th>Provider</th>
+                        <th>Duration</th>
+                        <th>Amount</th>
+                        <th>Join event</th>
+                        <th>Edit event</th>
+                        <th>Delete event</th>
+                    </tr>
+                    <tr v-for="s in scholarshipList">
+                        <td>{{s.scholarshipName}}</td>
+                        <td>{{s.description}}</td>
+                        <td>{{s.subject}}</td>
+                        <td>{{s.provider}}</td>
+                        <td>{{s.duration}}</td>
+                        <td>{{s.amount}}</td>
+                        <td><a href="applyScholarship.html"></a><button type="button" @click.prevent="goToApply(s)">Apply</button></td>
+                        <td><a href="editScholarship.html"><button type="button" @click.prevent="goToEditScholarship(s)">Edit</button></a></td>
+                        <!-- deleteEvent button. As of now any staff can delete any event. -->
+                        <!-- When we add account services we will deal with this. -->
+                        <!-- Perhaps by moving the delete button to a "Your Managed Events" page -->
+                        <td><button type="button" @click.prevent="deleteScholarship(s.scholarshipId)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <script type="module" src="js/scholarship-list.js"></script>
+    </body>
+</html>

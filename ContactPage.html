@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Contacts Page</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+
+        <link rel="stylesheet" href="style.css">
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>Maori Opportunities and Staff</h1>
+            </header>
+            <div class="contact">
+                <navigation></navigation>
+            </div>
+
+            <div>
+                <h2>Staff Members</h2>
+                <div>
+                    <button @click.prevent="getAllStaff()">All Staff</button>
+                </div>
+                <table>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>First Name</th>
+                        <th>Surname</th>
+                        <th>Address</th>
+                        <th>Staff Email Address</th>
+                        <th>Phone Number</th>
+                        <th>Office Location</th>
+                    </tr>
+                    <tr v-for="s in staff">
+                        <td>{{s.staffId}}</td>
+                        <td>{{s.firstName}}</td>
+                        <td>{{s.surname}}</td>
+                        <td>{{s.address}}</td>
+                        <td><a v-bind:href="'mailto:' + s.staffEmailAddress" target="_blank">{{ s.staffEmailAddress }}</a></td>
+                        <td>{{s.phoneNumber}}</td>
+                        <td>{{s.office}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="js/staff-list.js"></script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+.navigation {
+    background-color: #F2ECCE;
+    width:98%;
+    border: 4px solid #FFE0C4;
+    top: 0;
+    margin-left: 0.75%;
+}
+
+ul.index li{
+    width:100%;
+}
+
+ul {
+    list-style-type: none;
+    padding:0;
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+
+}
+
+li {
+    float: left;
+    display: inline-block;
+}
+
+li a {
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #dddddd;
+    border: 2px solid #ccc;
+    padding: 10px;
+    color: #616161;
+    font-weight: bold;  
+}
+
+li a:hover {
+    background-color: white ;
+}
+
+h1{
+    width: 100%;
+    text-align: center;
+    top: 10%;
+}
+
+html{
+    background-color: #F2ECCE;
+    position: fixed;
+    top: 0%;
+    width: 100%;
+    height: 100vh;
+}
+
+body{
+    height: 100vh;
+    background-color: #EBF8FF;
+    text-align:center;
+    border: 4px solid #FFE0C4;
+}
+
+footer {
+    position:absolute;
+    bottom:0px;
+    width:99%;
+    background:#F2ECCE;
+}
+
+table{
+   overflow-y:scroll;
+   display:inline-block;
+   height: 500px;
+}
+    th{
+        background: #ddd;
+        border: 4px solid #FFE0C4;
+    }
+    td{
+        background: #eee;
+    }
+    tbody {
+        overflow-y: auto;
+        overflow-x: hidden;      
+    }
+    
+form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+label, input {
+    /* In order to define widths */
+    display: inline-block;
+}
+
+label {
+    width: 30%;
+    /* Positions the label text beside the input */
+    text-align: right;
+}
+
+label+input {
+    width: 20%;
+    /* Large margin-right to force the next element to the new-line
+             and margin-left to create a gutter between the label and input */
+    margin: 0 30% 0 4%;
+}
+
+input+input {
+    float: right;
+}
+
+.form #signin{
+    margin-top: 2%;
+}
+
+.buttons{
+    margin-top:1%;
+}
+
+/* making the text area inputs slightly bigger
+   feel free to change */
+textarea {
+    width: 60%;
+    height: 100px;
+    resize: none;
+    vertical-align: top;
+}
+
+
+/* code for hover drop down menus for filters */
+/* copied and pasted from https://www.w3schools.com/howto/howto_css_dropdown.asp */
+/* feel free to change literally anything about it */
+/* I just wanted to add something to distinguish filterrs from sorts to make testing stuff easier - Reuben */
+/* Dropdown Button */
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+/* end of code for hover drop down filters */

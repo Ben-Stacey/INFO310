@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Create Event</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Maori Opportunities and Events</h1>
+        </header>
+
+        <main id="content">
+            <navigation></navigation>
+            <div id="createEvent">
+                <h1>Create New Event</h1>
+                <form @submit.prevent="createEvent()">
+                    <fieldset>
+                        <legend>Account Details:</legend>
+                        <p>
+                            <label for="name">Event name:</label>
+                            <input type="text" id="name" v-model="event.eventName" required>
+                        </p>
+                        <p>
+                            <label for="category">Category:</label>
+                            <input type="text" id="category" v-model="event.category" required>
+                        </p>
+                        <p>
+                            <label for="date">Date of event:</label>
+                            <input type="date" id="date" v-model="event.eventDate" required>
+                        </p>
+                        <p>
+                            <label for="time">Time of event:</label>
+                            <input type="time" id="time" v-model="event.eventTime" required>
+                        </p>
+                        <p>
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" v-model="event.location" required>
+                        </p>
+                        <p>
+                            <label for="type">Type of event:</label>
+                            <input type="text" id="type" v-model="event.type" required>
+                        </p>
+                        <p>
+                            <label for="description">Description:</label>
+                            <textarea id="description" v-model="event.description" required></textarea>
+                        </p>
+                    </fieldset>
+                    <div class="buttons">
+                        <button class="submitButton" type="submit">Submit Event</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <script type="module" src="js/events-list.js"></script>
+    </body>
+</html>

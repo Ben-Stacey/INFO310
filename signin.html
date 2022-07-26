@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Please Sign In To Continue</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Maori Opportunities and Events</h1>
+        </header>
+        <main id="content">
+            <navigation></navigation>
+            <br>
+
+            <div class="pageTitle">
+                <h1>Student Sign In</h1>
+            </div>
+
+            <h2>{{signInMessage}}</h2>
+            <div class="form">
+                <form @submit.prevent="signIn()">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" v-model="student.username" required><br>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" v-model="student.password" required><br>
+
+                    <button name="signin" id ="signin" type="submit" class="submitButton">Sign In Student</button><br>
+                    <p name="create" id ="create" class="center">If you don't have an account then you can <a href="http://localhost:8080/createAccount.html">create one</a></p>
+
+                </form>
+            </div>
+        </main>
+        <script type="module" src="js/student.js"></script>
+    </body>
+</html>

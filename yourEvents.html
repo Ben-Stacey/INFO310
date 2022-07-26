@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Your Events</title>
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>Maori Opportunities and Events</h1>
+            </header>
+            <div class="events">
+                <navigation></navigation>
+            </div>
+
+            <div>
+                <h2>Your Events</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Description</th>
+                        <th>Not attending event?</th> 
+                    </tr>
+                    <tr v-for="event in joinedEvents">
+                        <td>{{event.eventName}}</td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.type}}</td>
+                        <td>{{event.eventDate}}</td>
+                        <td>{{event.eventTime}}</td>
+                        <td>{{event.description}}</td>
+                        <td><button type="button" @click.prevent="deleteJoinedEvent(event.attendId)">Remove me from event</button></td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <!-- <script type="module" src="js/events-list.js"></script> -->
+        <script type="module" src="js/joined-events.js"></script>
+    </body>
+</html>

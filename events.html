@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Find Events</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <main id="content">
+            <header>
+                <h1>Maori Opportunities and Events</h1>
+            </header>
+            <div class="events">
+                <navigation></navigation>
+            </div>
+
+            <div>
+                <h2>Our Events and Opportunities</h2>
+                
+                <div id="categories">
+                    <div class="dropdown">
+                            <button class="dropbtn" @click.prevent="getAllEvents()">All Events</button>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Date</button>
+                        <div class="dropdown-content">
+                            <a v-for="date in dates" @click.prevent="filterByDate(date)">{{date}}</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Subject</button>
+                        <div class="dropdown-content">
+                            <a v-for="cat in categories" @click.prevent="filterByCategory(cat)">{{cat}}</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropbtn">Type of Event</button>
+                        <div class="dropdown-content">
+                            <a v-for="type in types" @click.prevent="filterByType(type)">{{type}}</a>
+                        </div>
+                    </div>
+                </div>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Location</th>
+                        <th>Category</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Description</th>
+                        <th>Join event</th>
+                        <th>Edit event</th>
+                        <th>Delete event</th>
+                    </tr>
+                    <tr v-for="event in eventList">
+                        <td>{{event.eventName}}</td>
+                        <td>{{event.location}}</td>
+                        <td>{{event.category}}</td>
+                        <td>{{event.type}}</td>
+                        <td>{{event.eventDate}}</td>
+                        <td>{{event.eventTime}}</td>
+                        <td>{{event.description}}</td>
+                        <td><button type="button" @click.prevent="joinEvent(event)">Join</button></td>
+                        <td><a href="editEvent.html"><button type="button" @click.prevent="goToEditEvent(event)">Edit</button></a></td>
+                        <!-- deleteEvent button. As of now any staff can delete any event. -->
+                        <!-- When we add account services we will deal with this. -->
+                        <!-- Perhaps by moving the delete button to a "Your Managed Events" page -->
+                        <td><button type="button" @click.prevent="deleteEvent(event.eventId)">Delete</button></td>
+                    </tr>
+                </table>
+            </div>
+        </main>
+        <script type="module" src="js/events-list.js"></script>
+    </body>
+</html>

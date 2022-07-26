@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Edit Event</title>
+        <meta charset="windows-1252">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="js/external/vue.global.js"></script>
+        <script src="js/external/vuex.global.js"></script>
+        <script src="js/external/vuex-persistedstate.js"></script>
+        <script src="js/external/axios.js"></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+            <h1>Staff Contacts</h1>
+        </header>
+        <div class="editEvent">
+            <navigation></navigation>
+        </div>
+
+        <main id="content">
+            <div id="editEvent">
+                <h1>Edit Event</h1>
+                <navigation></navigation>
+                <form @submit.prevent="editEvent()">
+                    <fieldset>
+                        <legend>Event Details:</legend>
+                        <p>
+                            <label for="newName">Event name:</label>
+                            <input type="text" id="newName" v-model="eventToUpdate.eventName" required>
+                        </p>
+                        <p>
+                            <label for="newCategory">Category:</label>
+                            <input type="text" id="newCategory" v-model="eventToUpdate.category" required>
+                        </p>
+                        <p>
+                            <label for="newDate">Date of event:</label>
+                            <input type="date" id="newDate" v-model="eventToUpdate.eventDate" required>
+                        </p>
+                        <p>
+                            <label for="newTime">Time of event:</label>
+                            <input type="time" id="newTime" v-model="eventToUpdate.eventTime" required>
+                        </p>
+                        <p>
+                            <label for="newLocation">Location:</label>
+                            <input type="text" id="newLocation" v-model="eventToUpdate.location" required>
+                        </p>
+                        <p>
+                            <label for="newType">Type of event:</label>
+                            <input type="text" id="newType" v-model="eventToUpdate.type" required>
+                        </p>
+                        <p>
+                            <label for="newDescription">Description:</label>
+                            <textarea id="newDescription" v-model="eventToUpdate.description" required></textarea>
+                        </p>
+
+                    </fieldset>
+                    <div class="buttons">
+                        <td><button type="button" @click.prevent="editEvent(eventToUpdate)">Edit Event</button></td>
+                    </div>
+                </form>
+            </div>
+            <footer>
+                <p>Contact us<br>
+                    About us<br>
+                FAQ/Help</p>
+            </footer>
+        </main>
+        <script type="module" src="js/events-list.js"></script>
+    </body>
+</html>
